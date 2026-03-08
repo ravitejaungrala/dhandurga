@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap');
+
+.isavari-loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000814;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: opacity 1s ease-in-out;
+}
+
+.isavari-loader-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.text-merge-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    height: 120px;
+}
+
+.merge-text-left,
+.merge-text-right {
+    font-family: 'Playfair Display', serif;
+    font-size: 5.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: absolute;
+    transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.merge-text-left {
+    transform: translateX(-150%);
+    animation: slideInLeftText 1s ease-out forwards;
+}
+
+.merge-text-right {
+    transform: translateX(150%);
+    animation: slideInRightText 1s ease-out forwards;
+}
+
+.text-merge-container.merged .merge-text-left {
+    transform: translateX(-50%);
+    animation: none;
+}
+
+.text-merge-container.merged .merge-text-right {
+    transform: translateX(50%);
+    animation: none;
+}
+
+@keyframes slideInLeftText {
+    from {
+        opacity: 0;
+        transform: translateX(-200%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-150%);
+    }
+}
+
+@keyframes slideInRightText {
+    from {
+        opacity: 0;
+        transform: translateX(200%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(150%);
+    }
+}
+
+.text-cyan {
+    background: linear-gradient(135deg, #ff9e43, #ff7a00, #ff5722);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(255, 122, 0, 0.3);
+}
+
+.text-gold {
+    background: linear-gradient(135deg, #4aa3ff, #0a66c2, #004ba0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(10, 102, 194, 0.3);
+}
+
+.combined-bottom-text {
+    color: #F8FAFC;
+    font-weight: 300;
+    letter-spacing: 5px;
+    font-size: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+    text-transform: uppercase;
+    margin-top: 2rem;
+}
+
+.combined-bottom-text.show {
+    opacity: 0.9;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+
+    .merge-text-left,
+    .merge-text-right {
+        font-size: 3rem;
+    }
+
+    .text-merge-container {
+        height: 80px;
+    }
+
+    .combined-bottom-text {
+        font-size: 1rem;
+        letter-spacing: 3px;
+    }
+}
